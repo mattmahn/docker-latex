@@ -6,5 +6,10 @@ to attempt making a smaller version that will significantly improve CI build
 times. In addition, I also wanted to be able to use a Makefile for building.
 
 
+## License
+
+This is released into the public domain.
+
+
 [tianon/latex]: https://hub.docker.com/r/tianon/latex/
 
