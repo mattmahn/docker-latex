@@ -29,6 +29,21 @@ compile_pdf:
 ```
 
 
+## Development
+
+### Building the container
+
+```sh
+docker build --pull -t docker-latex .
+```
+
+### Compiling sample document
+
+```sh
+docker run docker-latex pdflatex /tmp/test-sample.tex
+```
+
+
 ## License
 
 This is released into the public domain.
