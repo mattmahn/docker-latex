@@ -1,14 +1,14 @@
 # docker-latex
 
-**It seems that the texlive-full Alpine Linux package maybe broken, so this
-doesn't work rigt now.**
+This container came about because I ~~was~~am using [tianon/latex][] to build
+some LaTeX documents, but GitLab took a long time to pull the container, so I
+decided to attempt making a smaller version that will significantly improve CI
+build times. In addition, I also wanted to be able to use a Makefile for
+building.
 
-This container came about because I ~~was~~am using [tianon/latex][] to build some
-LaTeX documents, but GitLab took a long time to pull the container, so I decided
-to attempt making a smaller version that will significantly improve CI build
-times. In addition, I also wanted to be able to use a Makefile for building.
-
-This more lightweight version reduces the build time by about 4 minutes!
+After retrieving texlive-texmf for the first time comment out wget to avoid
+downloading for each image build. This more lightweight version reduces the
+build time compared to tianon/latex during subsequent builds.
 
 
 ## Usage
@@ -40,7 +40,10 @@ docker build --pull -t docker-latex .
 ### Compiling sample document
 
 ```sh
-docker run docker-latex pdflatex /tmp/test-sample.tex
+docker run --rm \
+    --volume host_path:/home/publisher/work \
+    docker-latex \
+    pdflatex -output-format=pdf -output-directory=work test-sample.tex
 ```
 
 
